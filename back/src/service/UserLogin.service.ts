@@ -18,7 +18,7 @@ export class UserLoginService {
             if(password === this.options1.password){
                 return {
                     result: true,
-                    url: this.options1.url
+                    url: this.options1.pic
                 }
             }else{
                 return{
@@ -29,7 +29,7 @@ export class UserLoginService {
             if(password === this.options2.password){
                 return {
                     result: true,
-                    url: this.options2.url
+                    url: this.options2.pic
                 }
             }else{
                 return{
@@ -40,7 +40,7 @@ export class UserLoginService {
             if(password === this.options3.password){
                 return {
                     result: true,
-                    url: this.options3.url
+                    url: this.options3.pic
                 }
             }else{
                 return{

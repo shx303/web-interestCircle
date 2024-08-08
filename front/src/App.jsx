@@ -10,9 +10,9 @@ import Content from './Content/Content';
 function App() {
   return (
     <div className="App">
-      <Sidebar />
       <InterestCircle />
       <Content />
+      <Sidebar />
     </div>
   );
 }

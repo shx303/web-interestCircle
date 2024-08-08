@@ -28,7 +28,6 @@ class Card extends React.Component {
             </div>
         </div>
 
-        {showDetail && <Detail title={title} description={description} commentsCount={commentsCount} likeCount={likeCount} />}
       </> 
     );
   }
