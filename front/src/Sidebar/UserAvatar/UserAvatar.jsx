@@ -16,8 +16,7 @@ const UserAvatar = () => {
     setShowLogin(false);
   }
 
-
-
+  
   const handleLogin = () => {
     setShowLogin(true);
   };

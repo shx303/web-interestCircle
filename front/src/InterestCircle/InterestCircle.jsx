@@ -10,8 +10,6 @@ function InterestCircle(){
     const handleSearch = (quary) => {
         console.log(quary);
     }
-
-    
     return (
         <div className='InterestCircle-container'>
             <div  className='InterestCircle'>

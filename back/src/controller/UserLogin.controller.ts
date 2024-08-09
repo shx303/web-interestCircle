@@ -7,6 +7,7 @@ export class UserController {
 
   @Post('/login')
   async login(@Body() loginData: { username: string, password: string }) {
+    console.log(loginData);
     const {result, pic} = await this.UserLoginService.login(loginData.username, loginData.password);
     return { success: result , pic};
   }

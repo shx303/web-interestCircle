@@ -18,8 +18,8 @@ const Detail = (props) => {
             <div className='right'>
                 <div className='post'>
                     <div className='post-header'>
-                        <img src={props.user.avatar} alt='' className='avatar'/>
-                        {props.user.username}
+                        {/* <img src={props.user.avatar} alt='none' className='avatar'/> */}
+                        {props.username}
                     </div>
                     <div className='post-title'>{props.title}</div>
                     <div className='post-content'>{props.content}</div>
