@@ -3,11 +3,8 @@ import './Guide.css';
 
 const Guide = () => {
 
-    const [interests, setInterests] = useState([
-        '科技',
-        '旅行',
-        '美食',
-        '音乐',
+    let [interests, setInterests] = useState([
+        '全部'
     ]);
     const [newInterest, setNewInterest] = useState('');
 

@@ -20,8 +20,7 @@ export interface Card {
 }
 
 export interface Comment {  
-  blongTo_id: number;
-  id: number;
+  belongTo_id: number;
   author_username: string;
   content: string;
 }

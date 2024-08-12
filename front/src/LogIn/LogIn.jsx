@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './LogIn.css'
+import axios from 'axios'
 
 const LogIn = ({ onLoginSuccess }) =>  {
     const [username, setUsername] = useState('');
@@ -8,19 +9,42 @@ const LogIn = ({ onLoginSuccess }) =>  {
     const [Wrong, setShowWrong] = useState(false);
 
     const CheckLogin = () => {
-        if (username === 'admin' && password === '123') {
-            setShowEmpty(false);
-            setShowWrong(false);
-            console.log('Login success');
-            const avatarUrl = "./picture/用户1.jpg"
-            onLoginSuccess(avatarUrl)
-        } else if (username === '' || password === '') {
+        //console.log('Checking login');
+        if (username === '' || password === '') {
             setShowWrong(false);
             setShowEmpty(true);
-        } else {
+            return;
+        }
+
+        axios.post('http://127.0.0.1:7001/login', {
+            username: username,
+            password: password
+        })
+        .then(response => {
+            if (response.username != "error") {
+                setShowEmpty(false);
+                setShowWrong(false);
+                console.log('Login success');
+                const photoname = username + '.jpg';
+                console.log(photoname);
+                if(photoname === "tianyi.jpg"){
+                    const avatarUrl ="./picture/tianyi.jpg";
+                }else if(photoname === "guwen.jpg"){
+                    const avatarUrl ="./picture/guwen.jpg";
+                }else if(photoname === "xuexiao.jpg"){
+                    const avatarUrl ="./picture/xuexiao.jpg";
+                }
+                onLoginSuccess("avatarUrl")
+            } else {
+                setShowEmpty(false);
+                setShowWrong(true);
+            }
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
             setShowEmpty(false);
             setShowWrong(true);
-        }
+        });
     }
 
     return (

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css'; // 引入样式文件
 import UserAvatar from './UserAvatar/UserAvatar';
+import Content from '../Content/Content';
 
 
 const Sidebar = () => {
@@ -17,7 +18,9 @@ const Sidebar = () => {
           <li>联系我们</li>
         </ul>
       </nav>
+      <Content />
     </div>
+    
   );
 };
 

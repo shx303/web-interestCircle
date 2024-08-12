@@ -17,6 +17,7 @@ export class UserController {
   @Post('/login')
   async login(@Body() user: UserDTO) {
     const result = await this.userService.login(user.username,user.password);
+    this.ctx.cookies.set('token', result);
     return result;
   }
 }

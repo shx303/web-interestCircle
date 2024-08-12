@@ -9,12 +9,15 @@ export class CardService {
     private comments: Comment[] = [];
 
     async AddCard(card: Card) {
+        const num = this.cards.length;
+        card.id = num + 1;
         this.cards.push(card);
-        return card;
+        return this.cards;
     }
 
     async AddComment(comment: Comment) {
         this.comments.push(comment);
+        return this.comments;
     }
 
     async GetCards(InterestCircle : string) {
@@ -25,7 +28,23 @@ export class CardService {
                 aim_cards.push(this.cards[i]);
             }
         }
+        return this.cards;
+    }
 
-        return aim_cards;
+    async SetCommentCount(cardId: number) {
+        const num = this.cards.findIndex(card => card.id === cardId);
+        this.cards[num].comment_count += 1;
+    }
+
+    async GetCommentList(cardId: number) {
+        let aim_comments: Comment[] = [];
+        const num = this.comments.length;
+        for (let i = 0; i < num; i++) {
+            if(this.comments[i].belongTo_id === cardId){
+                aim_comments.push(this.comments[i]);
+            }
+        }
+
+        return aim_comments
     }
 }
