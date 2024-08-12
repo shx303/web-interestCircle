@@ -2,7 +2,6 @@ import React, { useState, useEffect } from'react';
 import './Detail.css';
 import axios from 'axios';
 import Comment from '../Comment/Comment';
-import Card from '../Card/Card';
 
 const Detail = (props) => {
     const [comments ,setComments] = useState([]);

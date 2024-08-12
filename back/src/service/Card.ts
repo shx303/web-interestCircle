@@ -1,5 +1,5 @@
 import { Provide,Scope, ScopeEnum} from '@midwayjs/core';
-import { Card , Comment } from '../interface';
+import { Card , Comment ,InterrestCircle } from '../interface';
 
 @Scope(ScopeEnum.Singleton)
 @Provide()
@@ -7,6 +7,7 @@ export class CardService {
 
     private cards: Card[] = [];
     private comments: Comment[] = [];
+    private interestCircles: string[] = ["全部"];
 
     async AddCard(card: Card) {
         const num = this.cards.length;
@@ -46,5 +47,16 @@ export class CardService {
         }
 
         return aim_comments
+    }
+
+    async AddInterrestCircle(message: InterrestCircle){
+        if(!this.interestCircles.includes(message.name)){
+            this.interestCircles.push(message.name);
+        }
+        console.log(this.interestCircles);
+    }
+
+    async GetInterrestCircleList(){
+        return this.interestCircles;
     }
 }

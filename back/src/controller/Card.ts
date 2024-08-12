@@ -1,6 +1,6 @@
 import { Inject , Controller , Post, Body,Get, Query } from '@midwayjs/core';
 import { Context } from '@midwayjs/koa';
-import { cardDTO , CommentDTO } from '../dto/Card';
+import { cardDTO , CommentDTO ,InterrestCircleDTO } from '../dto/Card';
 import {CardService} from '../service/Card';
 
 
@@ -56,6 +56,17 @@ export class CardController {
     async getCommentList(@Query('cardId') cardId : number) {
         console.log(cardId);
         const result = await this.cardService.GetCommentList(cardId);
+        return result;
+    }
+
+    @Post('/AddInterrestCircle')
+    async addInterrestCircle(@Body() message: InterrestCircleDTO) {
+        await this.cardService.AddInterrestCircle(message);
+    }
+
+    @Get('/GetInterrestCircleList')
+    async getInterrestCircleList() {
+        const result = await this.cardService.GetInterrestCircleList();
         return result;
     }
 

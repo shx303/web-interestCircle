@@ -19,3 +19,8 @@ import { Rule, RuleType } from '@midwayjs/validate';
     @Rule(RuleType.string().required())
     content: string;
   }
+
+  export class InterrestCircleDTO {
+    @Rule(RuleType.string().required())
+    name: string;
+  }

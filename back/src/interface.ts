@@ -24,3 +24,7 @@ export interface Comment {
   author_username: string;
   content: string;
 }
+
+export interface InterrestCircle {
+  name: string;
+}
