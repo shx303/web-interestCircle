@@ -6,6 +6,7 @@ import * as info from '@midwayjs/info';
 import * as path from 'path';
 import * as upload from '@midwayjs/upload';
 import * as staticServe from "koa-static";
+import * as staticFile from '@midwayjs/static-file';
 
 import { ReportMiddleware } from './middleware/report.middleware';
 
@@ -14,6 +15,7 @@ import { ReportMiddleware } from './middleware/report.middleware';
     koa,
     validate,
     upload,
+    staticFile,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -26,7 +28,7 @@ export class MainConfiguration {
   app: koa.Application;
 
   async onReady() {
-    this.app.use(staticServe(path.join(__dirname, './public/uploads')));
+    //this.app.use(staticServe(path.join(__dirname, './dist_of_front/index.html')));
 
     // add middleware
     this.app.useMiddleware([ReportMiddleware]);

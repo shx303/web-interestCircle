@@ -24,7 +24,7 @@ export class PhotoController {
     if (typeof ctx.set !== 'function') {
         throw new Error('Invalid context object');
     }
-    ctx.set('Content-Type', 'image/jpg'); // 根据实际图片类型设置
+    ctx.Type('Content-Type', 'image/jpg'); // 根据实际图片类型设置
 
     // 读取文件并返回
     const fileStream = fs.createReadStream(imagePath);

@@ -8,6 +8,15 @@ export default {
   koa: {
     port: 7001,
   },
+
+  staticFile:{
+    dirs:{
+      default:{
+        prefix: '/',
+        dir:'./dist_of_front',
+      }
+    }
+  }
 } as MidwayConfig;
 
 
