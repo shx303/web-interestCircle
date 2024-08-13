@@ -24,9 +24,6 @@ function Content() {
   };
 
   const handleCreateCard = () => {
-    //setCards([...cards, newCard]);
-    //setNewCard({ title: '', description: '', image: '' });
-
     axios.post('http://127.0.0.1:7001/card/AddCard', {
       belongingInterestCircle : "ALL",
       title: newCard.title,

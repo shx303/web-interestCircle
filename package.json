@@ -1,0 +1,17 @@
+{
+  "name": "interestcircle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "workspaces": [
+    "back",
+    "front"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build" : "npm run build -w back && npm run build -w front"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
