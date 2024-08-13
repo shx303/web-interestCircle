@@ -1,0 +1,25 @@
+/* UserAvatar.css */
+  .user-avatar {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .avatar-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .login-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .login-icon {
+    height: 450%;
+    width: auto;
+  }
+  

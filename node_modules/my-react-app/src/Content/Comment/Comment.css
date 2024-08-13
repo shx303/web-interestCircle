@@ -1,0 +1,24 @@
+/* Comment.css */
+
+.comment {
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .comment-content {
+    font-size: 14px;
+    color: #333;
+  }
+  
