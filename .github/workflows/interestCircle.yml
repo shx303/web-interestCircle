@@ -1,23 +1,39 @@
-
 name: interecircle  
   
-on: 
-  workflow_dispatch
+on:  
+  workflow_dispatch  
+  
 jobs:  
   build:  
     name: interecircle  
     runs-on: ubuntu-latest  
-    strategy:
-      matrix:
-        node-version: [20.x]
+    strategy:  
+      matrix:  
+        node-version: [20.x]  
     steps:  
       - name: Checkout code  
-        uses: actions/checkout@v4
-      - name: Use Node.js ${{matrix.node-version}}  
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{matrix.node-version}} 
-          cache : 'npm'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run : npm test 
+        uses: actions/checkout@v4  
+  
+      - name: Use Node.js ${{ matrix.node-version }}  
+        uses: actions/setup-node@v3  
+        with:  
+          node-version: ${{ matrix.node-version }}  
+  
+      # 使用 actions/cache 来缓存 node_modules 目录  
+      - name: Cache node modules  
+        uses: actions/cache@v3  
+        with:  
+          path: '**/node_modules'  
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}  
+          cache-hit-var: CACHE_HIT  
+          restore-keys: |  
+            ${{ runner.os }}-node-${{ matrix.node-version }}-  
+   
+      - name: Install dependencies  
+        if: env.CACHE_HIT != 'true'  
+        run: npm ci  
+  
+      - name: Build (if present)  
+        run: npm run build --if-present  
+  
+      - name: Run tests  
