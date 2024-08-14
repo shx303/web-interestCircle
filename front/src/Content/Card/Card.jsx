@@ -9,7 +9,8 @@ class Card extends React.Component {
       username: '',
       title: '',
       content :" ",
-      showDetail: false
+      showDetail: false,
+      picname: '',
     };
   }
   handleTitleClick = () => { 
@@ -17,7 +18,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const { title, content ,id} = this.props;
+    const { title, content , id , picname} = this.props;
     const { showDetail } = this.state;
 
     return (

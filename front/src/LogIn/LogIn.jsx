@@ -28,11 +28,11 @@ const LogIn = ({ onLoginSuccess }) =>  {
                 const photoname = username + '.jpg';
                 console.log(photoname);
                 if(photoname === "tianyi.jpg"){
-                    const avatarUrl ="./picture/tianyi.jpg";
+                    const avatarUrl ="../../icon/picture/tianyi.jpg";
                 }else if(photoname === "guwen.jpg"){
-                    const avatarUrl ="./picture/guwen.jpg";
+                    const avatarUrl ="../../icon/picture/guwen.jpg";
                 }else if(photoname === "xuexiao.jpg"){
-                    const avatarUrl ="./picture/xuexiao.jpg";
+                    const avatarUrl ="../../icon/picture/xuexiao.jpg";
                 }
                 onLoginSuccess("avatarUrl")
             } else {

@@ -9,6 +9,9 @@ import { Rule, RuleType } from '@midwayjs/validate';
 
     @Rule(RuleType.string().required())
     content: string;
+
+    @Rule(RuleType.string())
+    picname: string;
   }
 
   export class CommentDTO {  

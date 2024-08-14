@@ -5,7 +5,7 @@ import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
 import * as path from 'path';
 import * as upload from '@midwayjs/upload';
-import * as staticServe from "koa-static";
+//import * as staticServe from "koa-static";
 import * as staticFile from '@midwayjs/static-file';
 
 import { ReportMiddleware } from './middleware/report.middleware';

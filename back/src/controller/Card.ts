@@ -22,7 +22,8 @@ export class CardController {
             title: message.title,
             content: message.content,
             comment_count: 0,
-            like_count: 0
+            like_count: 0,
+            picname : message.picname,
         }
         const result = await this.cardService.AddCard(card);
         return result;

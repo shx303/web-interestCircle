@@ -6,6 +6,7 @@ import Comment from '../Comment/Comment';
 const Detail = (props) => {
     const [comments ,setComments] = useState([]);
     const [commentInput, setCommentInput] = useState('');
+    const [imageUrl, setImageUrl] = useState(null); 
 
     useEffect(() => {
         axios.get('http://127.0.0.1:7001/card/GetCommentList',{
@@ -19,7 +20,22 @@ const Detail = (props) => {
           .catch(error => {
             console.error('There was an error fetching the cards!', error);
           });
-      }, []);
+          // 获取图片
+        axios.get('http://127.0.0.1:7001/download',{
+            params: {
+                imageName: props.picname,
+            },
+            responseType: 'arraybuffer'
+        }).then (response => {
+            const blob = new Blob([response.data], { type: 'image/jpg' });
+            const this_imageurl = URL.createObjectURL(blob);
+            setImageUrl(this_imageurl).then(() => console.log(imageUrl));
+            //console.log(this_imageurl);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
 
     const handleCommentSubmit = () => {
         axios.post('http://127.0.0.1:7001/card/AddComment', {
@@ -55,7 +71,11 @@ const Detail = (props) => {
     return(
         <div className = 'container'>
             <div className='left'>
-                {props.pic == " "? <h1>暂无图片</h1> : <img src={props.pic} alt=''/>}
+            {imageUrl ? (  
+                <img src={imageUrl} alt="来自后端的图片" style={{ maxWidth: '100%' }} />  
+            ) : (  
+                <p>暂无图片</p>  
+      )} 
             </div>
             <div className='right'>
                 <div className='post'>

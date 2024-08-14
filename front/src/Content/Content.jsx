@@ -5,9 +5,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios'
 
 function Content() {
-  const [cards , setCards] = React.useState([]);
+  const [cards , setCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [newCard, setNewCard] = useState({ title: '', description: '', image: '' });
+  const [newCard, setNewCard] = useState({ title: '', description: '', picname: '' });
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:7001/card/GetCardList')
@@ -28,7 +29,22 @@ function Content() {
       belongingInterestCircle : "ALL",
       title: newCard.title,
       content: newCard.description,
+      picname : newCard.picname
     }).then(response => {
+      //上传图片
+      const formData = new FormData();
+      formData.append('${newCard.title}', selectedFile);
+      axios.post('http://127.0.0.1:7001/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(response => {
+        console.log('上传成功', response.data);
+      }).catch(error => {
+        console.error('上传失败', error);
+      });
+    
+      //更新卡片
       axios.get('http://127.0.0.1:7001/card/GetCardList')
       .then(response => {
         setCards(response.data);
@@ -49,21 +65,15 @@ function Content() {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewCard({ ...newCard, image: reader.result });
-      };
-      reader.readAsDataURL(file);
-    }
+    setSelectedFile(e.target.files[0]);
+    setNewCard({ ...newCard, picname: e.target.files[0].name });
   };
 
   return (
     <div className="content">
       <div className="card-container">
         {cards.map((card, index) => (
-          <Card key = {index} id={card.id} title={card.title} content={card.content} /> // 渲染卡片
+          <Card key = {index} id={card.id} title={card.title} content={card.content} picname={card.picname} /> // 渲染卡片
         ))}
       </div>
       <button 

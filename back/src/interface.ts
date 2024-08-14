@@ -17,6 +17,7 @@ export interface Card {
   content: string;
   comment_count: number;
   like_count: number; 
+  picname: string;
 }
 
 export interface Comment {  
